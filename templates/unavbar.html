@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>security and effective file sharing</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style></style>
+<body>
+<div class="w3-top">
+    <div class="w3-row w3-padding w3-black">
+        <table style="width: 100%;"> <td style="width:80%;">
+      <div class="w3-col s2">
+        <a href="home" class="w3-button w3-block w3-black">HOME</a>
+      </div>
+      <div class="w3-col s2">
+        <a href="trequest" class="w3-button w3-block w3-black">Request to Trustee</a>
+      </div>
+      
+      <div class="w3-col s2">
+        <a href="arequest" class="w3-button w3-block w3-black">Request to Authority</a>
+      </div>
+
+      <div class="w3-col s2">
+        <a href="files" class="w3-button w3-block w3-black">File Download</a>
+      </div>
+      <div class="w3-col s2">
+        <a href="logout" class="w3-button w3-block w3-black">Logout</a>
+      </div>
+      </td>
+      <td style="background-color: blanchedalmond;">
+      <div>
+          <a href="profile" class="w3-button w3-block w3-black" >
+              {% if user.is_authenticated%}
+              Welocome {{user.first_name}}  
+              {% endif %}
+              </a>
+        </div>
+      </td>
+        </table>
+    </div>
+  </div>
+  {%block content%}
+
+  {%endblock%}
+  </body>
+  </html>

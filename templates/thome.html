@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>TRUSTEE LOGIN</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+ 
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+
+  .container {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      max-width: 200px;
+      border-radius: 20px;
+    }
+    
+  .container img {
+      width: 100%;
+      height: 20px;
+    }
+    
+  .container .btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #e7e4e2;
+      color: black;
+      font-size: 14px;
+      padding: 16px 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 25px;
+      text-align: center;
+    }
+    
+    .container .btn:hover {
+      background-color: black;
+      color: rgb(184, 178, 178);
+    }  
+
+</style>
+<script>
+  $("div").click(function(){
+    window.location=$(this).find("a").attr("href"); return false;
+ });
+</script>
+<body>
+
+<!-- Links (sit on top) -->
+{% include 'tnavbar.html'%}
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home" style="background-image:url({% static 'images/user_home1.jpg'%});">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag"></span>
+  </div>
+  <div class="w3-display-middle w3-center>
+    <span class="w3-text-white" style="font-size:90px"><br></span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white"></span>
+  </div>
+</header>
+
+
+
+<section>
+  <!--for demo wrap-->
+  <link rel="stylesheet" type="text/css" href="{% static 't_fhome/style.css' %}">
+  <br>
+  <h1>List of all Users</h1>
+  <div class="tbl-header" style="background-color: rgb(241, 195, 138);">
+ 
+  </div>
+</section>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V02</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'x/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'x/css/main.css' %}">
+<!--===============================================================================================-->
+
+<div style="text-align: center;">
+<div style="padding-left:5%; padding-right: 5%; padding-bottom: 10%;">			
+					<div class="table"  >
+
+						<div class="row header" style="text-align: center;">
+							<div class="cell">
+								S No.
+              </div>
+              <div class="cell">
+								Image
+							</div>
+							<div class="cell">
+								Full Name
+							</div>
+							<div class="cell">
+								Username
+							</div>
+							<div class="cell">
+								Number of files
+							</div>
+							<div class="cell">
+								User/Trustee
+							</div>
+						
+						</div>
+            {% for user in users%}
+						<div class="row" style="text-align: center;" onclick="location.href='profile/{{user.id}}'">
+              <div class="cell" data-title="S No">
+								{{ forloop.counter }}.
+              </div>
+              <div class="cell" data-title="Image">
+								<img  style=" border-radius: 50%; height:60px ; width: 60px;" src="{{user.image.url}}" alt="Avatar">
+              </div>
+							<div class="cell" data-title="Full Name">
+								{{user.first_name}}  {{user.last_name}}
+							</div>
+							<div class="cell" data-title="Username">
+								{{user.username}}
+							</div>
+							<div class="cell" data-title="Files">
+								5
+							</div>
+							<div class="cell" data-title="Postion">
+                {% if user.is_authority %}
+                     Authority
+                {% elif user.is_trustee %}
+                       Trustee
+                {% else %}
+                       User
+               {%endif%}        
+                
+
+              </div>  
+            
+            </div>
+            {% endfor %}
+            
+
+					</div>
+			
+</div>
+</div>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE SECURITY</span></h5>
+    <h2>Authentication Factors that Help Ensure Secure File Sharing.</h2>
+    <p>Verifying that someone is who they say they are is essential for keeping your company’s data safe. In the past, a single, unique password might have been enough protection to keep potential digital thieves at bay, but hackers’ methods have become more sophisticated with each passing today.</p><br>
+	<p>So, what can you do to maintain the wall of security around your data?</p><br>
+	<p>Authentication is a way to verify the person attempting to access your FTP server and the data stored within it is actually who they say they are. If your business deals with sensitive data, strict authentication measures are imperative for keeping data out of the wrong hands. And, ineffective authentication can have an impact on compliance, too.</p>
+    
+  </div>
+</div>
+
+
+
+</body>
+</html>

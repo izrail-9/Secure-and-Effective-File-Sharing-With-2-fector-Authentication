@@ -1,0 +1,106 @@
+{%extends "tnavbar.html"%}
+{% block content %}
+{% include 'tup_file.html'%} 
+
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>files</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 't_fhome/style.css' %}">
+</head>
+
+<body>
+
+    
+
+
+<section>
+  <!--for demo wrap-->
+  <br>
+  <h1>List of all files</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0"  class="x" ">
+      <thead>
+        <tr class="x" >
+          <th class="x" style="text-align: center; width: 55px;">S. No</th>
+          <th class="x" style="text-align: center;">Name</th>
+          <th class="x" style="text-align: center;">Size(in Byte)</th>
+          <th class="x" style="text-align: center;">Formate</th>
+          <th class="x" style="text-align: center;">Date</th>
+          <th class="x" style="text-align: center;">Hide</th>
+          
+          <th class="x" style="text-align: center;">OPERATIONS</th>
+          
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content" style="border-color:rgb(109, 98, 78);;">
+    <table cellpadding="0" cellspacing="0" border="0" class="x">
+      <tbody style="background-color: rgb(31, 28, 28);">
+    <!--    <tr class="x">
+          <td class="x">AAC</td>
+          <td class="x">AAC</td>
+          <td class="x">AUSTRALIAN COMPANY </td>
+          <td class="x">$1.38</td>
+          <td class="x">+2.01</td>
+          <td class="x">DE</td>
+   
+        </tr>-->
+        {% for message in messages%}
+        <font color="red" style="font-size:17px;"> {{message}} </font>
+         {% endfor %}
+
+{% for file in files%}
+        <tr class="x">
+          <td class="x" style="width: 55px;">{{ forloop.counter }}.</td>
+          <td class="x" style="text-align: center;">{{file.name}}</td>
+          <td class="x" style="text-align: center;">{{file.file_size|floatformat:2}}MB </td>
+          <td class="x" style="text-align: center;">{{file.format}}</td>
+          <td class="x" style="text-align: center;">{{file.time}}</td>
+          <td class="x" style="text-align: center;">{% if file.hide %}
+            Yes
+            {%else%}
+            No
+            {%endif%}
+                       
+           </td>
+           <link rel="stylesheet" type="text/css" href="{% static 't_fhome/drop_style.css' %}">
+          <td class="x" style="text-align: center;">  
+            <div class="dropdown">
+              <button class="dropbtn">OPTIONS</button>
+              <div class="dropdown-content">
+                <a href="{{file.files.url}}" download="{{file.files}}">Download</a>
+               
+                <a href="files/delete/{{file.id}}">Delete</a>
+              </div>
+            </div>
+                
+          </td>
+          
+          
+         
+        </tr>
+       
+   {% endfor%}    
+       
+      
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+    </body>
+    </html>
+       
+{% endblock %}
+
+
+
+
+
+  

@@ -1,0 +1,148 @@
+{%extends "unavbar.html"%}
+{% load static %}
+<br>
+<br><br>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    {% block content%}
+    <link href="{% static 'request/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <style>
+        .container {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            max-width: 200px;
+          }
+          
+        .container img {
+            width: 100%;
+            height: 20px;
+          }
+          
+        .container .btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: #777575;
+            color: black;
+            font-size: 14px;
+            padding: 16px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            text-align: center;
+          }
+          
+          .container .btn:hover {
+            background-color: black;
+            color: rgb(184, 178, 178);
+          }
+        
+    </style>
+    
+</head>
+<body>
+
+
+<div class="bodyx">
+<br><br><br><br>
+
+
+
+{% if requests|length > 0 %}
+<h1><center> Requested </center></h1>
+<table class="racetimes" style="width: 1400px;">
+  <tr id="firstrow" class="x">
+    <th class="x">S No.</th>
+    <th class="x">File Name</th>
+    <th class="x">Size</th>
+    <th class="x">Formate</th>
+    <th class="x">Requested on</th>
+    <th class="x">Last Upadate</th>
+    <th class="x">Delete</th>
+    <th class="x">Request</th>
+    
+  </tr>
+  {% for request in requests%}
+  {% if not request.files.hide %}
+  
+    <tr class="x">
+      
+      <td class="x">{{ forloop.counter }}</td>
+      <td class="x">{{request.files.name}}</td>
+      <td class="x">{{request.files.file_size|floatformat:2}}MB</td>
+      <td class="x">{{request.files.format}}</td>
+      <td class="x">{{request.timestamp}}</td>
+      <td class="x">{{request.update_on}}</td>
+      <td class="x">
+        <div class="container" >
+          <a href="trequest/delete/{{request.id}}" class="btn" style="text-decoration: none">Delete</a>        
+        </div>
+      </td>
+
+      <td class="x">
+        <div class="container" >
+          
+            
+            {% if request.tstatus == "Pending" %}
+            <a href="" class="btn" style="text-decoration: none;background: rgb(168, 63, 36);">Pending</a>
+            {% elif request.tstatus == "Accesed" %}
+            <a href="" class="btn" style="text-decoration: none ;background: rgb(64, 100, 48);">Accesed</a>
+            {% endif %}
+        </div>
+      </td>
+   </tr>
+   {% endif %}
+   {% endfor %}
+
+   {% endif %}
+
+</table>
+<br><br><br><br><br><br><br><br>
+
+
+
+<h1><center> All Files </center></h1>
+
+{% if files|length > 0 %}
+<table class="racetimes">
+
+<tr id="firstrow" class="x">
+  <th class="x">S No.</th>
+  <th class="x">File Name</th>
+  <th class="x">Size</th>
+  <th class="x">Formate</th>
+  <th class="x">Last Upadate</th>
+  <th class="x">Request</th>
+</tr>
+{% for file in files%}
+
+  <tr class="x">
+    
+    <td class="x">{{ forloop.counter }}</td>
+    <td class="x">{{file.name}}</td>
+    <td class="x">{{file.file_size|floatformat:2}}MB</td>
+    <td class="x">{{file.format}}</td>
+    <td class="x">{{file.update_on}}</td>
+    <td class="x">
+      <div class="container" >
+          <a href="trequest/{{file.id}}" class="btn" style="text-decoration: none">Request</a>             
+      </div>
+    </td>
+ </tr>
+ 
+
+{% endfor %}
+</table>
+{% endif %}
+
+
+
+</div>
+{%endblock%}
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Code By Webdevtrick ( https://webdevtrick.com ) -->
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Drag and Drop Image Upload | Webdevtrick.com</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  
+  <link rel="stylesheet" href="{% static 'tup_form/style.css' %}">
+ 
+</head>
+<body>
+ 
+<section>
+  <form action="" method="POST" enctype="multipart/form-data" action="tfiles">
+    {% csrf_token %}
+    <div class="container" >
+      <div class="row">
+        <div class="col-md-12" >
+          <div class="form-group" >
+            <label class="control-label" >Upload File</label>
+            <div class="preview-zone hidden"  >
+              <div class="box box-solid" style="background-color: rgb(109, 98, 78);" >
+                <div class="box-header with-border" >
+                  <div><b>Preview</b></div>
+                  <div class="box-tools pull-right" ">
+                    <button type="button" class="btn btn-danger btn-xs remove-preview" >
+                      <i class="fa fa-times"></i> Reset The Field
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body" ></div>
+              </div>
+            </div>
+            <div class="dropzone-wrapper" style="background-color: rgb(27, 20, 19);">
+              <div class="dropzone-desc" >
+                <i class="glyphicon glyphicon-download-alt"></i>
+                <p>Choose an image file or drag it here.</p>
+              </div>
+              <input type="file" name="img_logo" class="dropzone" ">
+            </div>
+          </div>
+        </div>
+      </div>
+     <table style="width: 100%;">
+       
+      <td style="text-align: left;">
+      <div class="row">
+        <div class="col-md-12" style="font-size: 17px; color: black;">
+          File Name: <input type="text" name="name" style="background-color: rgb(165, 163, 163); border-color: black; border-width:1px;">
+        </div>
+      </div>
+      </td>
+      <td style="text-align: right;">
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary pull-right">Upload</button>         
+          </div>
+        </div>
+        </td>
+      </table>
+
+    </div>
+  </form>
+</section>
+ 
+ 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script  src={% static 'tup_form/function.js' %}></script>
+ 
+</body>
+</html>

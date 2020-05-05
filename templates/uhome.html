@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>USER LOGIN</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+ 
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+
+<!-- Links (sit on top) -->
+
+{% include 'unavbar.html'%}
+<!-- Header with image -->
+<br><br>
+
+<header class="bgimg w3-display-container w3-grayscale-min" id="home" style="background-image:url({% static 'images/user_home1.jpg'%});">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag"></span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px"><br></span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white"></span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE SECURITY</span></h5>
+    <h2>Authentication Factors that Help Ensure Secure File Sharing.</h2>
+    <p>Verifying that someone is who they say they are is essential for keeping your company’s data safe. In the past, a single, unique password might have been enough protection to keep potential digital thieves at bay, but hackers’ methods have become more sophisticated with each passing today.</p><br>
+	<p>So, what can you do to maintain the wall of security around your data?</p><br>
+	<p>Authentication is a way to verify the person attempting to access your FTP server and the data stored within it is actually who they say they are. If your business deals with sensitive data, strict authentication measures are imperative for keeping data out of the wrong hands. And, ineffective authentication can have an impact on compliance, too.</p>
+    
+  </div>
+</div>
+
+
+
+</body>
+</html>
